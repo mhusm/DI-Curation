@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>title</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <script src="libs/vue.js"></script>
+    <script src="libs/flickrapi.js"></script>
+    <script src="photoinfo.js"></script>
+  </head>
+  <body>
+    <div id="app">
+     
+      <img v-for="(value, key) in photos" :src="'photos/' +key +'.jpg'">
+      </img>
+    </div>
+    <script src="client.js"></script>
+  </body>
+</html>
