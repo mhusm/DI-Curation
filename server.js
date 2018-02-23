@@ -26,7 +26,7 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
 
   photosearch({
     text: "architecture",
-    tags: "ocean",
+    tags: "mountains",
     tag_mode: "all",
     page: 1,
     per_page: 10,

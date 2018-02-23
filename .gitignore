@@ -61,4 +61,6 @@ data
 
 public/photos
 
+public/photoinfo.js
+
 config.js
