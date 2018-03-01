@@ -24,19 +24,22 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
   const getinfo = util.promisify(flickr.photos.getInfo);
 
 
+  // Parameter für die Suche
   photosearch({
     text: "architecture",
-    tags: "mountains",
+    tags: "sea,surf",
     tag_mode: "all",
-    page: 1,
-    per_page: 10,
-    color_codes : '0',
+    license: "",
+    page: 1, // Gewuenschte Seite
+    per_page: 60, // Fotos pro Seite
+ //   color_codes : '0',
     sort: 'interestingness-desc'
   }).then(result => {
   
     // Photos auf die Festplatte speichern
     result.photos.photo.forEach( (photo, index) => {
       // Photos beim Server holen
+      // Parameter für das Foto
       var request = https.get( `https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`, function(response) {
         var file = fs.createWriteStream(path.join("public", "photos", `${photo.id}.jpg`));
         response.pipe(file);
@@ -52,18 +55,21 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
     return Promise.all(infoPromises);
   }).then(result => {
     // Infos zu den Photos in der Datei photoinfo.json auf die Festplatte speichern
-    var photoInfo = {};
+    var photoInfo = [];
     result.forEach(p => {
       var photo = p.photo;
-      photoInfo[photo.id] = {
-        tags: photo.tags.tag.map( tag => {
-          return tag._content;
-        }),
-        description: photo.description._content,
+      var photoInf = {
+        id: photo.id,
+        // tags: photo.tags.tag.map( tag => {
+        //   return tag._content;
+        // }),
+   //     description: photo.description._content,
         title: photo.title._content};
+      photoInfo.push(photoInf);
     })
 
-    fs.writeFile(path.join('public', 'photoinfo.js'), "var photos = " +JSON.stringify(photoInfo), 'utf8', 
+    // Speicherort
+    fs.writeFile(path.join('public', 'photoinfo.js'), "var photos = " +JSON.stringify(photoInfo, null, '\t'), 'utf8', 
       err => {if(err) throw err;}
     );
 

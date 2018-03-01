@@ -11,9 +11,11 @@
   </head>
   <body>
     <div id="app">
-     
-      <img v-for="(value, key) in photos" :src="'photos/' +key +'.jpg'">
-      </img>
+      <div class="container">
+        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" :style="{ 'grid-area': item.rowStart 
+          +' / ' +item.columnStart +' / ' + (item.rowStart +1)  +' / ' +(item.columnStart +1) }">
+        </img>
+      </div>
     </div>
     <script src="client.js"></script>
   </body>
