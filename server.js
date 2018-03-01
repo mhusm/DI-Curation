@@ -68,6 +68,8 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
         groesse: 1,
         columnStart: 0,
         rowStart: 0,
+        isIn : false,
+        isOut : false,
         grid: "" };
       photoInfo.push(photoInf);
     })

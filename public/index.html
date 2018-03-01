@@ -13,7 +13,10 @@
     <div id="app">
       <button class="random" @click="randomize">Randomize</button>
       <div class="container">
-        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" :style="{ 'grid-area': item.grid }">
+        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" 
+        :style="{ 'grid-area': item.grid }"
+        :class="{out: item.isOut, in: item.isIn}"
+         @click="transition">
         </img>
       </div>
     </div>
