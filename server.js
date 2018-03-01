@@ -64,7 +64,11 @@ Flickr.tokenOnly(flickrOptions, function(error, flickr) {
         //   return tag._content;
         // }),
    //     description: photo.description._content,
-        title: photo.title._content};
+        title: photo.title._content,
+        groesse: 1,
+        columnStart: 0,
+        rowStart: 0,
+        grid: "" };
       photoInfo.push(photoInf);
     })
 

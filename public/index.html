@@ -11,9 +11,9 @@
   </head>
   <body>
     <div id="app">
+      <button class="random" @click="randomize">Randomize</button>
       <div class="container">
-        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" :style="{ 'grid-area': item.rowStart 
-          +' / ' +item.columnStart +' / ' + (item.rowStart +1)  +' / ' +(item.columnStart +1) }">
+        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" :style="{ 'grid-area': item.grid }">
         </img>
       </div>
     </div>

@@ -18,3 +18,9 @@ img {
     grid-gap: 10px 10px;
     grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 }
+
+.random {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+}
