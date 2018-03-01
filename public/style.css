@@ -18,17 +18,16 @@ img.test {
 .container {
     padding: 2em;
     width: calc(100vw - 4em);
-    height: calc(300vh - 4em);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: stretch;
 }
 
 .column {
     width: 15%;
     display: flex;
     flex-direction: column-reverse;
-    height: 100%;
     overflow: hidden;
     
 }
