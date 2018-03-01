@@ -6,8 +6,8 @@ body {
 
 img {
     max-width: 100%;
-    max-height: 100%;
     transition: all 2s;
+    margin-top: 1em;
 }
 
 img.test {
@@ -18,11 +18,19 @@ img.test {
 .container {
     padding: 2em;
     width: calc(100vw - 4em);
-    height: calc(100vh - 4em);
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 10px 10px;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    height: calc(300vh - 4em);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.column {
+    width: 15%;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    overflow: hidden;
+    
 }
 
 .in {

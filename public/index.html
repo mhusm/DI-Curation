@@ -13,11 +13,42 @@
     <div id="app">
       <button class="random" @click="randomize">Randomize</button>
       <div class="container">
-        <img v-for="(item, index) in photos" :src="'photos/' +item.id +'.jpg'" 
-        :style="{ 'grid-area': item.grid }"
-        :class="{out: item.isOut, in: item.isIn}"
-         @click="transition">
-        </img>
+        <div class="column">
+          <img v-for="(item, index) in photos1" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
+       <div class="column">
+          <img v-for="(item, index) in photos2" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
+       <div class="column">
+          <img v-for="(item, index) in photos3" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
+       <div class="column">
+          <img v-for="(item, index) in photos4" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
+       <div class="column">
+          <img v-for="(item, index) in photos5" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
+       <div class="column">
+          <img v-for="(item, index) in photos6" :src="'photos/' +item.id +'.jpg'" 
+          :class="{out: item.isOut, in: item.isIn}"
+          @click="transition">
+          </img>
+       </div>
       </div>
     </div>
     <script src="client.js"></script>

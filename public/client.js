@@ -2,22 +2,15 @@ var app = new Vue({
     el: '#app',
     data: {
       photos: photos,
+      photos1: photos,
+      photos2: photos,
+      photos3: photos,
+      photos4: photos,
+      photos5: photos,
+      photos6: photos
     },
     methods: {
       randomize: function () {
-        this.photos.forEach(photo => {
-          photo.isIn = true;
-          setTimeout(function(){
-            photo.groesse =  Math.floor(Math.random() * Math.floor(3)) +1
-            photo.columnStart = Math.floor(Math.random() * Math.floor(9)) +1;
-            photo.rowStart = Math.floor(Math.random() * Math.floor(9)) +1;
-            photo.grid = photo.rowStart   
-              +' / ' +photo.columnStart 
-              +' / ' +(photo.rowStart +photo.groesse)  
-              +' / ' +(photo.columnStart +photo.groesse);
-            photo.isIn = false;
-          }, 2000);
-        })
       },
       transition: function (event) {
         console.log(event)
@@ -25,7 +18,12 @@ var app = new Vue({
       }
     },  
     created: function () {
-      photos.splice(10, 50);
+      this.photos1 = photos.slice(0, 5);
+      this.photos2 = photos.slice(5, 15);
+      this.photos3 = photos.slice(15, 27);
+      this.photos4 = photos.slice(27, 37);
+      this.photos5 = photos.slice(37, 45);
+      this.photos6 = photos.slice(45, 50);
       this.randomize();
     }
 });
