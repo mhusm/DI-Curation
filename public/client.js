@@ -76,7 +76,7 @@ var app = new Vue({
         var columns = 15; // 15 x 15 ergibt Diagonale fuer 120 Photos
         var rows = 15;
         var maxSize = 3;
-        // zufaellige positionierung und groesse
+        // zufaellige Positionierung und Groesse
         /*
         this.photos.forEach(photo => {
           photo.groesse =  Math.floor(Math.random() * Math.floor(maxSize)) +1;
