@@ -57,8 +57,7 @@ var app = new Vue({
       },
       switchSort: function() {
         this.orderDesc = !this.orderDesc;
-        this.sort();
-        this.calculateGrid();
+        this.updatePhotos();
       },
       sort: function() {
         if (this.orderDesc) {
@@ -115,9 +114,6 @@ var app = new Vue({
       }
     },  
     created: function () {
-  //    this.photos.splice(50, photos.length);
-     // this.sort();
-    //  this.calculateGrid();
       this.updatePhotos();
       console.log(this.photos);
 
