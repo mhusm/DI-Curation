@@ -13,6 +13,13 @@
     <div id="app">
       <button class="sort" @click="switchSort">Switch Sort</button>
       <input type="checkbox" id="filter" v-model="filterX"></input> <label for="filter">Nur die mit x</label>
+      <select id="text"  v-model="selectedText"> 
+        <option value="alle">Alle</option> 
+        <option value="sonne">Sonne</option> 
+        <option value="meer" >Meer</option>
+        <option value="berge">Berge</option>
+        <option value="stadt">Stadt</option>
+      </select>
       <div><input type="checkbox" id="gridinput" v-model="grid"></input> <label for="gridinput">Grid Layout</label></div>
       <div class="container" v-if="!grid">
           <img v-for="(item, index) in photos" :src="'photos/' +item.Name" 

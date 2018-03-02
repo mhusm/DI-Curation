@@ -5,27 +5,55 @@ var app = new Vue({
       photos: photos.slice(0, photos.length),
       orderDesc: true,
       filterX: false,
+      selectedText: "alle",
       grid: true
     },
     watch: {
       // whenever filterX changes, this function will run
       filterX: function (newFilterX, oldFilterX) {
-        if (newFilterX) {
-          this.photos = this.photos.filter(photo => {
-            return photo.boolean;
-          });
-        }
-        else {
+        if (!newFilterX) {
           this.photos = this.photosOrig.slice(0, this.photosOrig.length);
-          this.sort();
         }
-        this.calculateGrid();
+        this.updatePhotos();
+      },
+      // whenever selectedText changes, this function will run
+      selectedText: function (newSelectedText, oldSelectedText) {
+        this.photos = this.photosOrig.slice(0, this.photosOrig.length);       
+        this.updatePhotos();
       }
     },
     methods: {
       transition: function (event) {
         console.log(event)
         event.target.classList.toggle("test");
+      },
+      applyFilterX: function() {
+        if (this.filterX) {
+          this.photos = this.photos.filter(photo => {
+            return photo.boolean;
+          });
+        }
+      },
+      applySelectedText: function() {
+        if (this.selectedText !=="alle") {
+          this.photos = this.photos.filter(photo => {
+            return photo.text === this.selectedText;
+          });
+        }
+
+      },
+      updatePhotos: function() {
+        // Filtern nach x
+        this.applyFilterX();
+
+        // Filtern nach text
+        this.applySelectedText();
+
+        // Sortieren
+        this.sort();
+
+        // Grid berechnen
+        this.calculateGrid();
       },
       switchSort: function() {
         this.orderDesc = !this.orderDesc;
@@ -88,8 +116,9 @@ var app = new Vue({
     },  
     created: function () {
   //    this.photos.splice(50, photos.length);
-      this.sort();
-      this.calculateGrid();
+     // this.sort();
+    //  this.calculateGrid();
+      this.updatePhotos();
       console.log(this.photos);
 
 
