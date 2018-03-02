@@ -13,9 +13,15 @@
     <div id="app">
       <button class="sort" @click="switchSort">Switch Sort</button>
       <input type="checkbox" id="filter" v-model="filterX"></input> <label for="filter">Nur die mit x</label>
-      <div class="container">
+      <div><input type="checkbox" id="gridinput" v-model="grid"></input> <label for="gridinput">Grid Layout</label></div>
+      <div class="container" v-if="!grid">
           <img v-for="(item, index) in photos" :src="'photos/' +item.Name" 
-          :class="{out: item.isOut, in: item.isIn}"
+            @click="transition">
+          </img>
+      </div>
+      <div class="grid" v-else>
+          <img v-for="(item, index) in photos" :src="'photos/' +item.Name" 
+          :style="{ 'grid-area': item.grid }"
           @click="transition">
           </img>
       </div>

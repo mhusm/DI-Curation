@@ -4,7 +4,8 @@ var app = new Vue({
       photosOrig: photos,
       photos: photos.slice(0, photos.length),
       orderDesc: true,
-      filterX: false
+      filterX: false,
+      grid: true
     },
     watch: {
       // whenever filterX changes, this function will run
@@ -18,6 +19,7 @@ var app = new Vue({
           this.photos = this.photosOrig.slice(0, this.photosOrig.length);
           this.sort();
         }
+        this.calculateGrid();
       }
     },
     methods: {
@@ -28,6 +30,7 @@ var app = new Vue({
       switchSort: function() {
         this.orderDesc = !this.orderDesc;
         this.sort();
+        this.calculateGrid();
       },
       sort: function() {
         if (this.orderDesc) {
@@ -41,11 +44,54 @@ var app = new Vue({
             return a.rank - b.rank ; //nach "rank", aufsteigend
           });
         }
+      },
+      calculateGrid: function() {
+        var columns = 15; // 15 x 15 ergibt Diagonale fuer 120 Photos
+        var rows = 15;
+        var maxSize = 3;
+        // zufaellige positionierung und groesse
+        /*
+        this.photos.forEach(photo => {
+          photo.groesse =  Math.floor(Math.random() * Math.floor(maxSize)) +1;
+          photo.columnStart = Math.floor(Math.random() * Math.floor(columns -1)) +1;
+          photo.rowStart = Math.floor(Math.random() * Math.floor(rows -1)) +1;
+          photo.grid = photo.rowStart   
+            +' / ' +photo.columnStart 
+            +' / ' +(photo.rowStart +photo.groesse)  
+            +' / ' +(photo.columnStart +photo.groesse);
+        });
+  */
+        // diagonal angeordnet
+        var current_row = 1;
+        var current_column = 1;
+        this.photos.forEach((photo, index) => {
+          photo.groesse =  1;
+          if (current_column < columns+1) {
+            photo.columnStart = current_column;
+            current_column += 1;
+          } else {
+            current_row += 1;
+            photo.columnStart = 1;
+            current_column = 2;
+            columns -= 1;
+          }
+  
+          photo.rowStart = current_row;
+          photo.grid = photo.rowStart   
+            +' / ' +photo.columnStart 
+            +' / ' +(photo.rowStart +photo.groesse)  
+            +' / ' +(photo.columnStart +photo.groesse);
+          console.log(photo.grid);
+        });
+  
       }
     },  
     created: function () {
+  //    this.photos.splice(50, photos.length);
       this.sort();
+      this.calculateGrid();
       console.log(this.photos);
+
 
     }
 });
