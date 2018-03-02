@@ -11,11 +11,14 @@ var app = new Vue({
     },
     methods: {
       randomize: function () {
+        var p = this.photos3;
+        this.photos3 = this.photos2;
+        this.photos2 = p;
       },
       transition: function (event) {
         console.log(event)
         event.target.classList.toggle("test");
-      }
+        }
     },  
     created: function () {
       this.photos1 = photos.slice(0, 5);
@@ -24,6 +27,5 @@ var app = new Vue({
       this.photos4 = photos.slice(27, 37);
       this.photos5 = photos.slice(37, 45);
       this.photos6 = photos.slice(45, 50);
-      this.randomize();
     }
 });

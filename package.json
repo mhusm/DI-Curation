@@ -4,6 +4,7 @@
   "description": "an experiment with the flickr api",
   "main": "server.js",
   "dependencies": {
+    "csv": "^2.0.0",
     "flickrapi": "^0.6.0"
   },
   "devDependencies": {},
