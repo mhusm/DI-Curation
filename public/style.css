@@ -5,14 +5,14 @@ body {
 }
 
 img {
-    max-width: 100%;
+    max-width: 200px;
     transition: all 2s;
     margin-top: 1em;
 }
 
 img.test {
-    height: 400px;
-    max-height: 400px;
+    width: 400px;
+    max-width: 400px;
 }
 
 .container {
@@ -20,18 +20,7 @@ img.test {
     width: calc(100vw - 4em);
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-}
+    flex-wrap: wrap;
+    align-items: flex-end;
+ }
 
-.column {
-    width: 15%;
-    display: flex;
-    flex-direction: column-reverse;
-    overflow: hidden;
-    
-}
-
-.in {
-    opacity: 0;
-}
