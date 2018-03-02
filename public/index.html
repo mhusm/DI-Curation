@@ -33,30 +33,35 @@
       </div>
       <div class="flex-columns" v-if="!grid && number">
           <div class="column">
+            <div>1</div>
               <img v-for="(item, index) in photos1" :src="'photos/' +item.Name" 
               :class="{out: item.isOut, in: item.isIn}"
               @click="transition">
               </img>
            </div>
            <div class="column">
+              <div>2</div>
               <img v-for="(item, index) in photos2" :src="'photos/' +item.Name" 
               :class="{out: item.isOut, in: item.isIn}"
               @click="transition">
               </img>
            </div>
            <div class="column">
+              <div>3</div>
               <img v-for="(item, index) in photos3" :src="'photos/' +item.Name"
               :class="{out: item.isOut, in: item.isIn}"
               @click="transition">
               </img>
            </div>
            <div class="column">
+              <div>4</div>
               <img v-for="(item, index) in photos4" :src="'photos/' +item.Name" 
               :class="{out: item.isOut, in: item.isIn}"
               @click="transition">
               </img>
            </div>
            <div class="column">
+              <div>5</div>
               <img v-for="(item, index) in photos5" :src="'photos/' +item.Name"
               :class="{out: item.isOut, in: item.isIn}"
               @click="transition">
