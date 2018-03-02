@@ -39,3 +39,20 @@ img.test {
     grid-gap: 10px 10px;
     grid-template: repeat(15, 1fr) / repeat(15, 1fr);
 }
+
+.flex-columns {
+    padding: 2em;
+    width: calc(100vw - 4em);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.column {
+    width: 15%;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    
+}

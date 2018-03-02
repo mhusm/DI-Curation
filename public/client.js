@@ -3,10 +3,16 @@ var app = new Vue({
     data: {
       photosOrig: photos,
       photos: photos.slice(0, photos.length),
+      photos1: photos.slice(0, 10),
+      photos2: photos.slice(10, 30),
+      photos3: photos.slice(30, 60),
+      photos4: photos.slice(60, 85),
+      photos5: photos.slice(85, 90),
       orderDesc: true,
       filterX: false,
       selectedText: "alle",
-      grid: true
+      grid: false,
+      number: true
     },
     watch: {
       // whenever filterX changes, this function will run
@@ -19,6 +25,12 @@ var app = new Vue({
       // whenever selectedText changes, this function will run
       selectedText: function (newSelectedText, oldSelectedText) {
         this.photos = this.photosOrig.slice(0, this.photosOrig.length);       
+        this.updatePhotos();
+      },
+      number: function() {
+        this.updatePhotos();
+      },
+      grid: function() {
         this.updatePhotos();
       }
     },
@@ -40,7 +52,36 @@ var app = new Vue({
             return photo.text === this.selectedText;
           });
         }
+      },
+      sortIntoBuckets: function() {
+        this.photos1 = [];
+        this.photos2 = [];
+        this.photos3 = [];
+        this.photos4 = [];
+        this.photos5 = [];
+        this.photos.forEach(photo => {
+          switch (photo.number) {
+            case 1:
+              this.photos1.push(photo);
+              break;
+            case 2:
+              this.photos2.push(photo);
+               break;
+            case 3:
+              this.photos3.push(photo);
+              break;
+            case 4:
+              this.photos4.push(photo);
+              break;
+            case 5:
+              this.photos5.push(photo);
+              break;
+            default:
+              console.log("number does not match " +photo.number)
+              break;
+          }          
 
+        });
       },
       updatePhotos: function() {
         // Filtern nach x
@@ -53,7 +94,13 @@ var app = new Vue({
         this.sort();
 
         // Grid berechnen
-        this.calculateGrid();
+        if (this.grid) {
+          this.calculateGrid();
+        }
+
+        if (this.number) {
+          this.sortIntoBuckets();
+        }
       },
       switchSort: function() {
         this.orderDesc = !this.orderDesc;

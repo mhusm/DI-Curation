@@ -21,14 +21,49 @@
         <option value="berge">Berge</option>
         <option value="stadt">Stadt</option>
       </select>
-      <div><input type="checkbox" id="gridinput" v-model="grid"></input> <label for="gridinput">Grid Layout</label></div>
+      <div><input type="checkbox" id="gridinput" v-model="grid"></input> <label for="gridinput">Grid Layout</label>
+        <span v-if="!grid"><input type="checkbox" id="columninput" v-model="number"></input> <label for="columninput">Order by Number</label></span>
+      </div>
+     
       <!-- Content starts here -->
-      <div class="container" v-if="!grid">
+      <div class="container" v-if="!grid && !number">
           <img v-for="(item, index) in photos" :src="'photos/' +item.Name" 
             @click="transition">
           </img>
       </div>
-      <div class="grid" v-else>
+      <div class="flex-columns" v-if="!grid && number">
+          <div class="column">
+              <img v-for="(item, index) in photos1" :src="'photos/' +item.Name" 
+              :class="{out: item.isOut, in: item.isIn}"
+              @click="transition">
+              </img>
+           </div>
+           <div class="column">
+              <img v-for="(item, index) in photos2" :src="'photos/' +item.Name" 
+              :class="{out: item.isOut, in: item.isIn}"
+              @click="transition">
+              </img>
+           </div>
+           <div class="column">
+              <img v-for="(item, index) in photos3" :src="'photos/' +item.Name"
+              :class="{out: item.isOut, in: item.isIn}"
+              @click="transition">
+              </img>
+           </div>
+           <div class="column">
+              <img v-for="(item, index) in photos4" :src="'photos/' +item.Name" 
+              :class="{out: item.isOut, in: item.isIn}"
+              @click="transition">
+              </img>
+           </div>
+           <div class="column">
+              <img v-for="(item, index) in photos5" :src="'photos/' +item.Name"
+              :class="{out: item.isOut, in: item.isIn}"
+              @click="transition">
+              </img>
+           </div>
+          </div>
+      <div class="grid" v-if="grid">
           <img v-for="(item, index) in photos" :src="'photos/' +item.Name" 
           :style="{ 'grid-area': item.grid }"
           @click="transition">
